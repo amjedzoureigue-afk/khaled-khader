@@ -44,6 +44,9 @@ h1,h2,p,ol{margin:0}
 .tag i{display:inline-block;width:1px;height:14px;background:rgba(255,255,255,.25);margin:0 7px;vertical-align:-2px}
 
 .grid{padding:10px 0 150px}
+/* last line of the main block, so it stays above the fixed bottom bar; on wide screens it is taken out of the two-column grid */
+.copy{margin:26px 0 0;text-align:center;color:var(--mut);font-size:12.5px;line-height:20px}
+@media(min-width:900px){.grid{position:relative}.copy{position:absolute;left:0;right:0;bottom:98px;margin:0}}
 .head{text-align:center}
 .kick{display:inline-block;font-weight:800;font-size:13.5px;color:var(--o3)}
 .kick::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--o);box-shadow:0 0 0 5px rgba(233,77,23,.22);margin-left:11px;vertical-align:1px}
@@ -178,6 +181,7 @@ h1 em{font-style:normal;color:#FF7A45}
   <p class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.4 8-8 9-4.6-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>صورتك تبقى في هاتفك: الصفحة لا ترفعها ولا تحفظها.</p>
   <p class="tip" id="tip" hidden>تتصفّح من داخل تطبيق. إن لم تُفتح صورك أو لم تُحفظ الصورة، اضغط على النقاط الثلاث (⋮) ثم «فتح في المتصفح».</p>
  </div>
+ <p class="copy">جميع الحقوق محفوظة © خالد خاضر 2026</p>
 </main>
 </div>
 
