@@ -367,8 +367,9 @@ svg{display:block}
 .cz__hist{margin-top:20px}
 .cz__hist h3{font-size:15.5px;font-weight:800;color:#FF9167;margin-bottom:8px}
 .cz__hist ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
-.cz__hist li{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:9px 14px;font-size:14.5px;color:#C9CEDA}
-.cz__hist li b{font-weight:900;direction:ltr;color:#fff;font-size:15px;letter-spacing:.06em;flex:none}
+.cz__hist button{display:flex;justify-content:space-between;align-items:baseline;gap:12px;width:100%;text-align:start;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:9px 14px;font-size:14.5px;color:#C9CEDA;transition:border-color .2s}
+.cz__hist button:hover{border-color:#FF9167}
+.cz__hist button b{font-weight:900;direction:ltr;color:#fff;font-size:15px;letter-spacing:.06em;flex:none}
 .cz__form{background:#fff;color:var(--ink);border-radius:26px;padding:22px 20px;display:grid;gap:16px;box-shadow:0 30px 60px -30px #000;min-width:0}
 .fld{display:grid;gap:6px;min-width:0}
 .lbl{font-weight:800;font-size:15px;line-height:1.6}
@@ -398,6 +399,18 @@ svg{display:block}
 .cz__code{font-weight:900;font-size:32px;line-height:1.3;direction:ltr;text-align:center;letter-spacing:.1em;background:var(--paper);border:1.5px dashed #F3B49C;border-radius:16px;padding:12px}
 .cz__done p{color:var(--txt)}
 .cz__done:focus{outline:0}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;opacity:0}
+.cz__track{margin-top:14px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:15px 18px;display:grid;gap:8px}
+.cz__track .lbl{color:#fff;font-size:16px}
+.cz__trow{display:flex;gap:8px}
+.cz__trow input{flex:1;min-width:0;font:inherit;font-size:16px;font-weight:800;letter-spacing:.06em;direction:ltr;text-align:center;text-transform:uppercase;color:var(--ink);background:#fff;border:1.5px solid transparent;border-radius:14px;padding:10px 12px}
+.cz__trow input::placeholder{font-weight:500;letter-spacing:.04em;color:#9AA1AF}
+.cz__trow input:focus{outline:0;border-color:var(--o);box-shadow:0 0 0 4px rgba(233,77,23,.32)}
+.cz__trow .btn{height:50px;padding:0 22px}
+.cz__tres{color:#C9CEDA;font-size:15px;line-height:1.75}
+.cz__prog{list-style:none;margin:10px 0 2px;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.cz__prog li{font-size:12px;font-weight:800;text-align:center;line-height:1.45;color:#8E97AB;border-top:4px solid rgba(255,255,255,.14);padding-top:7px}
+.cz__prog li.on{color:#fff;border-color:var(--o)}
 @media(min-width:900px){.cz{grid-template-columns:1fr 1.08fr;gap:44px;align-items:start;margin-top:40px}.cz__form{padding:30px}}
 
 /* ---------- news teaser ---------- */
@@ -472,8 +485,13 @@ html{scroll-behavior:auto}
 <span class="kick rv">فضاء المواطن</span><h2 class="h2 rv">اطرح انشغالك أو رأيك… مباشرةً</h2><p class="lead rv">من أي بلدية في ولاية الجلفة، ومن هاتفك: صف انشغالك أو مقترحك في دقيقة، ليصل مباشرةً إلى خالد خاضر وفريقه.</p>
 <div class="cz">
 <div class="cz__side rv">
-<ol class="cz__steps"><li><b>املأ الاستمارة</b><span>البلدية، القطاع، وصف مختصر، واسمك ورقم هاتفك.</span></li><li id="cz2"><b>أرسلها عبر واتساب</b><span>تُفتح رسالة جاهزة تحمل رقماً مرجعياً، ويمكنك إرفاق صورة.</span></li><li><b>تصل إلى فريق المترشح</b><span>تُستلم رسالتك للدراسة والمتابعة، والرقم المرجعي يسهّل الرجوع إليها.</span></li></ol>
-<p class="cz__note"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg><span>الموقع لا يحفظ بياناتك في أي خادم: الرسالة تخرج من حسابك أنت.</span></p>
+<ol class="cz__steps"><li><b>املأ الاستمارة</b><span>البلدية، القطاع، وصف مختصر، واسمك ورقم هاتفك.</span></li><li><b>تُسجَّل رسالتك</b><span>تُحفظ لدى فريق المترشح، وتحصل على رقم مرجعي.</span></li><li><b>تتبّع حالتها</b><span>أدخل رقمك المرجعي هنا لترى أين وصلت رسالتك.</span></li></ol>
+<form class="cz__track" id="cztf" novalidate>
+<label class="lbl" for="czti">تتبّع رسالتك</label>
+<div class="cz__trow"><input id="czti" name="code" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="12" placeholder="KK-XXXXXX"><button class="btn btn--o" type="submit">تتبّع</button></div>
+<div class="cz__tres" id="cztr" role="status" hidden></div>
+</form>
+<p class="cz__note"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg><span>بإرسال الاستمارة توافق على حفظ رسالتك واسمك ورقم هاتفك لدى فريق المترشح خالد خاضر، لمعالجة رسالتك والتواصل معك فقط.</span></p>
 <div class="cz__hist" id="czh" hidden><h3>رسائلك السابقة من هذا الجهاز</h3><ul></ul></div>
 </div>
 <div class="rv" style="--d:0.07s">
@@ -484,16 +502,16 @@ html{scroll-behavior:auto}
 <label class="fld"><span class="lbl">الوصف <em>*</em></span><textarea name="msg" rows="5" maxlength="900" placeholder="صف الانشغال أو المقترح باختصار ووضوح…"></textarea><small class="cnt"><span id="czn">0</span> / 900</small></label>
 <label class="fld"><span class="lbl">الاسم واللقب <em>*</em></span><input type="text" name="name" maxlength="60" autocomplete="name"></label>
 <label class="fld"><span class="lbl">رقم الهاتف <em>*</em></span><input type="tel" name="phone" inputmode="tel" maxlength="20" autocomplete="tel" placeholder="0550123456"></label>
+<input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
 <p class="cz__err" id="cze" role="alert" hidden></p>
-<div class="cz__btns"><button class="btn wa" type="submit" id="czs"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 01-11.8 7L4 20l1.1-4A8 8 0 1120 12z"/></svg> <span>أرسل عبر واتساب</span></button></div>
+<div class="cz__btns"><button class="btn btn--o" type="submit" id="czs"><span>أرسل الرسالة</span></button></div>
 </form>
 <div class="cz__form cz__done" id="czo" tabindex="-1" hidden>
-<p class="cz__okt">✓ رسالتك جاهزة</p>
+<p class="cz__okt">✓ تم استلام رسالتك</p>
 <p>رقمك المرجعي:</p>
 <p class="cz__code" id="czk">KK-000000</p>
-<p id="czm"></p>
-<label class="fld" id="czv" hidden><span class="lbl">نص الرسالة <small>(إن لم يُنسخ تلقائياً: اضغط مطوّلاً وانسخه)</small></span><textarea id="czt" rows="6" readonly></textarea></label>
-<div class="cz__btns"><a class="btn wa" id="czw" href="#" target="_blank" rel="noopener"><span>افتح واتساب</span></a><button class="btn btn--ghost" type="button" id="czc">انسخ الرسالة</button><button class="btn btn--ghost" type="button" id="czr">رسالة جديدة</button></div>
+<p>احتفظ بهذا الرقم: به تتبّع حالة رسالتك من هذه الصفحة في أي وقت.</p>
+<div class="cz__btns"><button class="btn btn--o" type="button" id="czg">تتبّع الحالة</button><button class="btn btn--ghost" type="button" id="czc">انسخ الرقم</button><button class="btn btn--ghost" type="button" id="czr">رسالة جديدة</button></div>
 </div>
 </div>
 </div>
@@ -791,73 +809,87 @@ html{scroll-behavior:auto}
     });
   }
 
-  /* citizen space: the message leaves from the citizen's own account; the site stores nothing on a server */
-  var WA_NUMBER = '';   /* رقم واتساب الذي يستقبل الانشغالات، بالصيغة الدولية دون «+»، مثال: 213550000000 — ما دام فارغاً تُنسخ الرسالة وتُرسل عبر صفحة فيسبوك */
-  var FB_PAGE = 'https://www.facebook.com/P2kh2';
+  /* citizen space: messages are stored by the site's own service (api.khaledkhader.com: a Cloudflare Worker and its database) */
+  var API = /^(localhost|127\.0\.0\.1)$/.test(location.hostname) ? 'http://127.0.0.1:8787' : 'https://api.khaledkhader.com';
+  var STEPS = ['تم الاستلام', 'قيد المراجعة', 'قيد المعالجة', 'تمت المعالجة'];   /* same order as the service */
   var czf = $('#czf');
   if (czf) {
-    var F = czf.elements, cze = $('#cze'), czo = $('#czo'), czh = $('#czh'), czn = $('#czn'), czc = $('#czc'), KEY = 'kk_msgs', last = '';
-    if (!WA_NUMBER) {
-      var sb = $('#czs'), s2 = $('#cz2');
-      sb.className = 'btn btn--o'; $('svg', sb).style.display = 'none'; $('span', sb).textContent = 'جهّز الرسالة للإرسال';
-      $('b', s2).textContent = 'أرسلها في رسالة خاصة';
-      $('span', s2).textContent = 'تُنسخ رسالتك مع رقم مرجعي، لتلصقها في صفحة المترشح على فيسبوك.';
-    }
-    F.msg.addEventListener('input', function () { czn.textContent = F.msg.value.length; });
-    var newCode = function () {
-      var a = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789', s = '';
-      for (var i = 0; i < 6; i++) s += a.charAt(Math.floor(Math.random() * a.length));
-      return 'KK-' + s;
+    var F = czf.elements, cze = $('#cze'), czo = $('#czo'), czh = $('#czh'), czn = $('#czn'), czs = $('#czs'), czc = $('#czc');
+    var cztf = $('#cztf'), czti = $('#czti'), cztr = $('#cztr'), KEY = 'kk_msgs', lastCode = '';
+    var post = function (path, body) {
+      return fetch(API + path, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }).then(function (r) {
+        return r.json().catch(function () { return {}; }).then(function (data) { return { status: r.status, data: data }; });
+      });
     };
+    var day = function (ms) { try { return new Date(ms).toLocaleDateString('ar-DZ', { day: 'numeric', month: 'long' }); } catch (e) { return ''; } };
     var load = function () { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } };
     var save = function (l) { try { localStorage.setItem(KEY, JSON.stringify(l.slice(0, 20))); } catch (e) {} };
+
+    /* follow a message by its reference number: the service answers with the status only, never with personal details */
+    var track = function (code) {
+      code = String(code || '').toUpperCase().replace(/\s+/g, '');
+      if (/^[A-Z0-9]{6}$/.test(code)) code = 'KK-' + code;
+      czti.value = code; cztr.hidden = false; cztr.textContent = '';
+      if (!/^KK-[A-Z0-9]{6}$/.test(code)) { cztr.textContent = 'اكتب الرقم المرجعي كما وصلك، مثال: KK-7F3K9Q'; return; }
+      cztr.textContent = 'جارٍ البحث…';
+      post('/api/status', { code: code }).then(function (r) {
+        cztr.textContent = '';
+        if (r.status === 200) {
+          var at = STEPS.indexOf(r.data.status), p = d.createElement('p'), ol = d.createElement('ol'), when = day(r.data.updated_ms);
+          p.textContent = r.data.kind + ' · ' + r.data.sector + ' — الحالة: ' + r.data.status + (when ? ' (آخر تحديث: ' + when + ')' : '');
+          ol.className = 'cz__prog';
+          STEPS.forEach(function (s, k) { var li = d.createElement('li'); li.textContent = s; if (k <= at) li.className = 'on'; ol.appendChild(li); });
+          cztr.appendChild(p); cztr.appendChild(ol);
+        } else if (r.status === 404 || r.status === 422) cztr.textContent = 'لم نجد رسالة بهذا الرقم. تأكد من كتابته كما وصلك.';
+        else cztr.textContent = 'تعذّر التحقق الآن. أعد المحاولة بعد قليل.';
+      }, function () { cztr.textContent = 'تعذّر الاتصال. تحقق من الإنترنت ثم أعد المحاولة.'; });
+    };
+    var goTrack = function (code) { track(code); cztf.scrollIntoView({ behavior: 'smooth', block: 'center' }); };
+    cztf.addEventListener('submit', function (e) { e.preventDefault(); track(czti.value); });
+
+    /* the reference numbers sent from this device are remembered here only, to follow them with one tap */
     var hist = function () {
       var l = load(), ul = $('ul', czh);
       czh.hidden = !l.length; ul.textContent = '';
       l.slice(0, 5).forEach(function (r) {
-        var li = d.createElement('li'), s = d.createElement('span'), b = d.createElement('b'), dt = '';
-        try { dt = new Date(r.t).toLocaleDateString('ar-DZ', { day: 'numeric', month: 'long' }); } catch (e) {}
-        s.textContent = r.k + ' · ' + r.s + (dt ? ' · ' + dt : ''); b.textContent = r.c;
-        li.appendChild(s); li.appendChild(b); ul.appendChild(li);
+        var li = d.createElement('li'), b = d.createElement('button'), s = d.createElement('span'), c = d.createElement('b'), when = day(r.t);
+        b.type = 'button'; s.textContent = r.k + ' · ' + r.s + (when ? ' · ' + when : ''); c.textContent = r.c;
+        b.appendChild(s); b.appendChild(c); li.appendChild(b); ul.appendChild(li);
+        b.addEventListener('click', function () { goTrack(r.c); });
       });
     };
+
+    F.msg.addEventListener('input', function () { czn.textContent = F.msg.value.length; });
     var fail = function (el, m) { cze.textContent = m; cze.hidden = false; el.focus(); };
+    var busy = function (on) { czs.disabled = on; $('span', czs).textContent = on ? 'جارٍ الإرسال…' : 'أرسل الرسالة'; };
     czf.addEventListener('submit', function (e) {
       e.preventDefault();
       var place = F.place.value.trim(), sector = F.sector.value, msg = F.msg.value.trim(), name = F.name.value.trim(), kind = F.kind.value;
+      var phone = F.phone.value.trim(), digits = phone.replace(/\D/g, '').length;
       if (place.length < 2) return fail(F.place, 'اكتب البلدية أو الحي.');
       if (!sector) return fail(F.sector, 'اختر القطاع.');
       if (msg.length < 10) return fail(F.msg, 'اكتب وصفاً مختصراً (10 أحرف على الأقل).');
       if (name.length < 3) return fail(F.name, 'اكتب الاسم واللقب.');
-      var phone = F.phone.value.trim(), digits = phone.replace(/\D/g, '').length;
       if (digits < 9 || digits > 13) return fail(F.phone, 'اكتب رقم هاتف صحيحاً (مثال: 0550123456).');
-      cze.hidden = true;
-      var c = newCode(), go = $('#czw'), tip = $('#czm');
-      last = '*' + (kind === 'انشغال' ? 'انشغال مواطن' : 'رأي أو مقترح') + '* — موقع خالد خاضر\n' +
-        'الرقم المرجعي: ' + c + '\n' + 'البلدية / الحي: ' + place + '\n' + 'القطاع: ' + sector + '\n' +
-        (name ? 'الاسم: ' + name + '\n' : '') + (phone ? 'رقم الهاتف: ' + phone + '\n' : '') + '\n' + msg;
-      var l = load(); l.unshift({ c: c, k: kind, s: sector, p: place, t: Date.now() }); save(l); hist();
-      $('#czk').textContent = c;
-      if (WA_NUMBER) {
-        go.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(last);
-        go.className = 'btn wa'; $('span', go).textContent = 'افتح واتساب';
-        tip.textContent = 'فتحنا لك واتساب برسالة جاهزة: اضغط «إرسال» هناك، ويمكنك إرفاق صورة. احتفظ بالرقم المرجعي للرجوع إلى رسالتك.';
-        var w = window.open(go.href, '_blank');
-        if (w) w.opener = null; else location.href = go.href;
-      } else {
-        go.href = FB_PAGE; go.className = 'btn fb'; $('span', go).textContent = 'افتح صفحة خالد خاضر على فيسبوك';
-        tip.textContent = 'نسخنا رسالتك: افتح صفحة خالد خاضر على فيسبوك والصقها في رسالة خاصة. احتفظ بالرقم المرجعي للرجوع إلى رسالتك.';
-        $('#czt').value = last; $('#czv').hidden = false;
-        copyText(last);
-      }
-      czf.hidden = true; czo.hidden = false; czo.focus();
+      cze.hidden = true; busy(true);
+      post('/api/messages', { kind: kind, place: place, sector: sector, msg: msg, name: name, phone: phone, website: F.website.value }).then(function (r) {
+        busy(false);
+        if (r.status === 201 && r.data.code) {
+          lastCode = r.data.code;
+          var l = load(); l.unshift({ c: lastCode, k: kind, s: sector, p: place, t: Date.now() }); save(l); hist();
+          $('#czk').textContent = lastCode;
+          F.msg.value = ''; czn.textContent = '0';
+          czf.hidden = true; czo.hidden = false; czo.focus();
+        } else if (r.status === 429) fail(czs, 'أرسلتَ عدة رسائل في وقت قصير. حاول مرة أخرى بعد قليل.');
+        else if (r.status === 422) fail(czs, 'تحقق من الخانات ثم أعد الإرسال.');
+        else fail(czs, 'تعذّر الإرسال الآن. أعد المحاولة بعد قليل.');
+      }, function () { busy(false); fail(czs, 'تعذّر الاتصال. تحقق من الإنترنت ثم أعد المحاولة.'); });
     });
+    $('#czg').addEventListener('click', function () { goTrack(lastCode); });
     czc.addEventListener('click', function () {
-      copyText(last).then(function () { czc.textContent = 'تم النسخ ✓'; setTimeout(function () { czc.textContent = 'انسخ الرسالة'; }, 2200); });
+      copyText(lastCode).then(function () { czc.textContent = 'تم النسخ ✓'; setTimeout(function () { czc.textContent = 'انسخ الرقم'; }, 2200); });
     });
-    $('#czr').addEventListener('click', function () {
-      F.msg.value = ''; czn.textContent = '0'; czo.hidden = true; czf.hidden = false; F.msg.focus();
-    });
+    $('#czr').addEventListener('click', function () { czo.hidden = true; czf.hidden = false; F.msg.focus(); });
     hist();
   }
 })();
